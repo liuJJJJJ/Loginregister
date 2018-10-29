@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../database/db.js');
+var db = require('../lib/db.js');
 var mongoose=require('mongoose');
 /* Index */
 router.get('/', function(req, res, next) {
@@ -48,7 +48,7 @@ router.post('/add', function(req, res, next) {
             if(docs.length>0){
                 res.send("no");
             }else{
-                var db=require('../database/db.js');
+                var db=require('../lib/db.js');
                 db.query(function(db){
                     db.collection("biao").insertMany([req.body], function(err, result) {
                         console.log("ok");
